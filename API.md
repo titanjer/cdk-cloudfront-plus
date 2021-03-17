@@ -70,7 +70,7 @@ new Distribution(scope: Construct, id: string, props: DistributionProps)
 
 Name | Type | Description 
 -----|------|-------------
-**extensions** | <code>Array<[EdgeLambda](#aws-cdk-aws-cloudfront-edgelambda)></code> | <span></span>
+**extensions** | <code>Array<[IExtensions](#cdk-cloudfront-plus-iextensions)></code> | <span></span>
 
 
 

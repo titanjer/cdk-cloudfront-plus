@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integ snapshot validation 1`] = `
+Object {
+  "Resources": Object {
+    "LambdaVersionFA49E61E": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Fn::Select": Array [
+            6,
+            Object {
+              "Fn::Split": Array [
+                ":",
+                Object {
+                  "Fn::GetAtt": Array [
+                    "myext7A29BB9F",
+                    "Outputs.ModifyResponseHeaderFunctionARN",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "distdistDistDAED5D0D": Object {
+      "Properties": Object {
+        "DistributionConfig": Object {
+          "DefaultCacheBehavior": Object {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "LambdaFunctionAssociations": Array [
+              Object {
+                "EventType": "origin-response",
+                "LambdaFunctionARN": Object {
+                  "Ref": "LambdaVersionFA49E61E",
+                },
+              },
+            ],
+            "TargetOriginId": "demostackdistdistDistOrigin182885C74",
+            "ViewerProtocolPolicy": "allow-all",
+          },
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": Array [
+            Object {
+              "CustomOriginConfig": Object {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": Array [
+                  "TLSv1.2",
+                ],
+              },
+              "DomainName": "aws.amazon.com",
+              "Id": "demostackdistdistDistOrigin182885C74",
+            },
+          ],
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "myext7A29BB9F": Object {
+      "Properties": Object {
+        "Location": Object {
+          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/modify-response-header",
+          "SemanticVersion": "1.0.0",
+        },
+      },
+      "Type": "AWS::Serverless::Application",
+    },
+  },
+  "Transform": "AWS::Serverless-2016-10-31",
+}
+`;

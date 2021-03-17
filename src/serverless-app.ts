@@ -1,15 +1,9 @@
 import * as cdk from '@aws-cdk/core';
-// import * as lambda from '@aws-cdk/aws-lambda';
-
 
 export interface ServerlessAppProps {
   readonly applicationId: string;
   readonly semanticVersion: string;
 }
-
-// export interface IServerlessApp {
-//   readonly functionVersionArn: lambda.Version;
-// }
 
 export class ServerlessApp extends cdk.Construct {
   readonly resource: cdk.CfnResource;

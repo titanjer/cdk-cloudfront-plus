@@ -3,8 +3,10 @@ import * as lambda from '@aws-cdk/aws-lambda';
 import * as cdk from '@aws-cdk/core';
 import { ServerlessApp } from './';
 
-export interface IExtensions extends cf.EdgeLambda { }
-
+export interface IExtensions {
+  readonly functionArn: string;
+  readonly functionVersion: lambda.Version;
+};
 
 export class ModifyResponseHeader extends ServerlessApp implements IExtensions {
   readonly functionArn: string;

@@ -24,9 +24,7 @@ const myExtension = new cfplus.ModifyResponseHeader(stack, 'myext');
 new cfplus.Distribution(stack, 'dist', {
   defaultBehavior: {
     origin: new origins.HttpOrigin('aws.amazon.com'),
-    edgeLambdas: [
-      myExtension,
-    ],
+    edgeLambdas: [ myExtension ],
   },
 });
 ```

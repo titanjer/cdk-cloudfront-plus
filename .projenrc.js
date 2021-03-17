@@ -27,6 +27,12 @@ const project = new AwsCdkConstructLibrary({
     module: 'cdk_cloudfront_plus',
   },
   dependabot: false,
+  keywords: [
+    'cdk',
+    'cloudfront',
+    'cdn',
+    'extension',
+  ],
 });
 
 const automation = new Automation(project, {

@@ -69,7 +69,10 @@
   },
   "bundledDependencies": [],
   "keywords": [
-    "cdk"
+    "cdk",
+    "cdn",
+    "cloudfront",
+    "extension"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

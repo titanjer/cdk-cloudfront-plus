@@ -3,7 +3,19 @@
 exports[`integ snapshot validation 1`] = `
 Object {
   "Resources": Object {
-    "LambdaVersionFA49E61E": Object {
+    "AntiHotlink7E3EC671": Object {
+      "Properties": Object {
+        "Location": Object {
+          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/anti-hotlinking",
+          "SemanticVersion": "1.2.5",
+        },
+        "Parameters": Object {
+          "RefererList": "example.com,exa?ple.*",
+        },
+      },
+      "Type": "AWS::Serverless::Application",
+    },
+    "LambdaVersionAntiHotlinkB0E73263": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Fn::Select": Array [
@@ -13,7 +25,28 @@ Object {
                 ":",
                 Object {
                   "Fn::GetAtt": Array [
-                    "myext7A29BB9F",
+                    "AntiHotlink7E3EC671",
+                    "Outputs.AntiHotlinking",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "LambdaVersionModifyRespE09BB59B": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Fn::Select": Array [
+            6,
+            Object {
+              "Fn::Split": Array [
+                ":",
+                Object {
+                  "Fn::GetAtt": Array [
+                    "ModifyRespFCE0CDC6",
                     "Outputs.ModifyResponseHeaderFunctionARN",
                   ],
                 },
@@ -23,6 +56,15 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Version",
+    },
+    "ModifyRespFCE0CDC6": Object {
+      "Properties": Object {
+        "Location": Object {
+          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/modify-response-header",
+          "SemanticVersion": "1.0.0",
+        },
+      },
+      "Type": "AWS::Serverless::Application",
     },
     "distdistDistDAED5D0D": Object {
       "Properties": Object {
@@ -34,11 +76,17 @@ Object {
               Object {
                 "EventType": "origin-response",
                 "LambdaFunctionARN": Object {
-                  "Ref": "LambdaVersionFA49E61E",
+                  "Ref": "LambdaVersionModifyRespE09BB59B",
+                },
+              },
+              Object {
+                "EventType": "viewer-request",
+                "LambdaFunctionARN": Object {
+                  "Ref": "LambdaVersionAntiHotlinkB0E73263",
                 },
               },
             ],
-            "TargetOriginId": "demostackdistdistDistOrigin182885C74",
+            "TargetOriginId": "demostack2distdistDistOrigin12A667D0B",
             "ViewerProtocolPolicy": "allow-all",
           },
           "Enabled": true,
@@ -53,21 +101,12 @@ Object {
                 ],
               },
               "DomainName": "aws.amazon.com",
-              "Id": "demostackdistdistDistOrigin182885C74",
+              "Id": "demostack2distdistDistOrigin12A667D0B",
             },
           ],
         },
       },
       "Type": "AWS::CloudFront::Distribution",
-    },
-    "myext7A29BB9F": Object {
-      "Properties": Object {
-        "Location": Object {
-          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/modify-response-header",
-          "SemanticVersion": "1.0.0",
-        },
-      },
-      "Type": "AWS::Serverless::Application",
     },
   },
   "Transform": "AWS::Serverless-2016-10-31",

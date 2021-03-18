@@ -8,17 +8,26 @@ export class IntegTesting {
   constructor() {
     const app = new cdk.App();
 
-    const stack = new cdk.Stack(app, 'demo-stack');
+    const stack = new cdk.Stack(app, 'demo-stack2');
 
-    // prepare the extension
-    const myExtension = new extensions.ModifyResponseHeader(stack, 'myext');
+    // prepare the `modify resonse header` extension
+    const modifyRespHeader = new extensions.ModifyResponseHeader(stack, 'ModifyResp');
+
+    // prepare the `anti-hotlinking` extension
+    const antiHotlinking = new extensions.AntiHotlinking(stack, 'AntiHotlink', {
+      referer: [
+        'example.com',
+        'exa?ple.*',
+      ],
+    });
 
     // create the cloudfront distribution with extension(s)
     new Distribution(stack, 'dist', {
       defaultBehavior: {
         origin: new origins.HttpOrigin('aws.amazon.com'),
         edgeLambdas: [
-          myExtension,
+          modifyRespHeader,
+          antiHotlinking,
         ],
       },
     });
@@ -27,3 +36,4 @@ export class IntegTesting {
 }
 
 
+new IntegTesting();

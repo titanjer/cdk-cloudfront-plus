@@ -4,8 +4,9 @@
 
 Name|Description
 ----|-----------
+[AntiHotlinking](#cdk-cloudfront-plus-antihotlinking)|The Anti-Hotlinking extension.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
-[ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|*No description*
+[ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
 
 
@@ -13,8 +14,9 @@ Name|Description
 
 Name|Description
 ----|-----------
+[AntiHotlinkingProps](#cdk-cloudfront-plus-antihotlinkingprops)|Construct properties for AntiHotlinking.
 [DistributionProps](#cdk-cloudfront-plus-distributionprops)|*No description*
-[ServerlessAppProps](#cdk-cloudfront-plus-serverlessappprops)|*No description*
+[ServerlessAppProps](#cdk-cloudfront-plus-serverlessappprops)|Construct properties for ServerlessApp.
 
 
 **Interfaces**
@@ -22,6 +24,40 @@ Name|Description
 Name|Description
 ----|-----------
 [IExtensions](#cdk-cloudfront-plus-iextensions)|*No description*
+
+
+
+## class AntiHotlinking  <a id="cdk-cloudfront-plus-antihotlinking"></a>
+
+The Anti-Hotlinking extension.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)
+
+### Initializer
+
+
+
+
+```ts
+new AntiHotlinking(scope: Construct, id: string, props: AntiHotlinkingProps)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+* **props** (<code>[AntiHotlinkingProps](#cdk-cloudfront-plus-antihotlinkingprops)</code>)  *No description*
+  * **referer** (<code>Array<string></code>)  Referer allow list with wildcard(* and ?) support i.e. `example.com` or `exa?ple.*`. 
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | <span></span>
+**functionArn** | <code>string</code> | <span></span>
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
 
 
 
@@ -76,7 +112,7 @@ Name | Type | Description
 
 ## class ModifyResponseHeader  <a id="cdk-cloudfront-plus-modifyresponseheader"></a>
 
-
+The modify response header extension.
 
 __Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IExtensions](#cdk-cloudfront-plus-iextensions)
 __Extends__: [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)
@@ -127,6 +163,7 @@ new ServerlessApp(scope: Construct, id: string, props: ServerlessAppProps)
 * **props** (<code>[ServerlessAppProps](#cdk-cloudfront-plus-serverlessappprops)</code>)  *No description*
   * **applicationId** (<code>string</code>)  *No description* 
   * **semanticVersion** (<code>string</code>)  *No description* 
+  * **parameters** (<code>Map<string, string></code>)  The parameters for the ServerlessApp. __*Optional*__
 
 
 
@@ -136,6 +173,19 @@ new ServerlessApp(scope: Construct, id: string, props: ServerlessAppProps)
 Name | Type | Description 
 -----|------|-------------
 **resource** | <code>[CfnResource](#aws-cdk-core-cfnresource)</code> | <span></span>
+
+
+
+## struct AntiHotlinkingProps  <a id="cdk-cloudfront-plus-antihotlinkingprops"></a>
+
+
+Construct properties for AntiHotlinking.
+
+
+
+Name | Type | Description 
+-----|------|-------------
+**referer** | <code>Array<string></code> | Referer allow list with wildcard(* and ?) support i.e. `example.com` or `exa?ple.*`.
 
 
 
@@ -171,7 +221,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)
 
 
 
@@ -188,7 +238,7 @@ Name | Type | Description
 ## struct ServerlessAppProps  <a id="cdk-cloudfront-plus-serverlessappprops"></a>
 
 
-
+Construct properties for ServerlessApp.
 
 
 
@@ -196,6 +246,7 @@ Name | Type | Description
 -----|------|-------------
 **applicationId** | <code>string</code> | <span></span>
 **semanticVersion** | <code>string</code> | <span></span>
+**parameters**? | <code>Map<string, string></code> | The parameters for the ServerlessApp.<br/>__*Optional*__
 
 
 

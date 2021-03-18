@@ -1,8 +1,15 @@
 import * as cdk from '@aws-cdk/core';
 
+/**
+ * Construct properties for ServerlessApp
+ */
 export interface ServerlessAppProps {
   readonly applicationId: string;
   readonly semanticVersion: string;
+  /**
+   * The parameters for the ServerlessApp
+   */
+  readonly parameters?: { [key: string]: string };
 }
 
 export class ServerlessApp extends cdk.Construct {
@@ -17,6 +24,7 @@ export class ServerlessApp extends cdk.Construct {
           ApplicationId: props.applicationId,
           SemanticVersion: props.semanticVersion,
         },
+        Parameters: props.parameters,
       },
     });
   }

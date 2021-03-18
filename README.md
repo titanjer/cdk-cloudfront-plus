@@ -17,16 +17,28 @@ const app = new cdk.App();
 
 const stack = new cdk.Stack(app, 'demo-stack');
 
-// prepare the extension
-const myExtension = new cfplus.ModifyResponseHeader(stack, 'myext');
+// prepare the `modify resonse header` extension
+const modifyRespHeader = new extensions.ModifyResponseHeader(stack, 'ModifyResp');
+
+// prepare the `anti-hotlinking` extension
+const antiHotlinking = new extensions.AntiHotlinking(stack, 'AntiHotlink', {
+  referer: [
+    'example.com',
+    'exa?ple.*',
+  ],
+});
 
 // create the cloudfront distribution with extension(s)
-new cfplus.Distribution(stack, 'dist', {
+new Distribution(stack, 'dist', {
   defaultBehavior: {
     origin: new origins.HttpOrigin('aws.amazon.com'),
-    edgeLambdas: [ myExtension ],
+    edgeLambdas: [
+      modifyRespHeader,
+      antiHotlinking,
+    ],
   },
 });
+
 ```
 
 

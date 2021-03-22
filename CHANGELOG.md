@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.2...v0.1.3) (2021-03-22)
+
+
+### Features
+
+* add security headers extension ([85c5a52](https://github.com/pahudnet/cdk-cloudfront-plus/commit/85c5a52a6dfd4c5a6fac4e480cab251e8e5ac4c6))
+* support AntiHotlinking extension ([3bf98d8](https://github.com/pahudnet/cdk-cloudfront-plus/commit/3bf98d8ae42044edb8429fc12ff31e91606cf96e))
+* support AntiHotlinking extension ([#2](https://github.com/pahudnet/cdk-cloudfront-plus/issues/2)) ([5d68320](https://github.com/pahudnet/cdk-cloudfront-plus/commit/5d6832019636bc03541b086c4808ea0a3737a603))
+
 ### [0.1.2](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.1...v0.1.2) (2021-03-17)
 
 ### [0.1.1](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.0...v0.1.1) (2021-03-17)

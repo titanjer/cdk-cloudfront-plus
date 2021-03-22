@@ -36,7 +36,7 @@ Object {
       },
       "Type": "AWS::Lambda::Version",
     },
-    "LambdaVersionModifyRespE09BB59B": Object {
+    "LambdaVersionSecurityHeaders03A0688D": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Fn::Select": Array [
@@ -46,8 +46,8 @@ Object {
                 ":",
                 Object {
                   "Fn::GetAtt": Array [
-                    "ModifyRespFCE0CDC6",
-                    "Outputs.ModifyResponseHeaderFunctionARN",
+                    "SecurityHeadersEA108852",
+                    "Outputs.AddSecurityHeaderFunction",
                   ],
                 },
               ],
@@ -57,10 +57,10 @@ Object {
       },
       "Type": "AWS::Lambda::Version",
     },
-    "ModifyRespFCE0CDC6": Object {
+    "SecurityHeadersEA108852": Object {
       "Properties": Object {
         "Location": Object {
-          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/modify-response-header",
+          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/add-security-headers",
           "SemanticVersion": "1.0.0",
         },
       },
@@ -74,19 +74,19 @@ Object {
             "Compress": true,
             "LambdaFunctionAssociations": Array [
               Object {
-                "EventType": "origin-response",
-                "LambdaFunctionARN": Object {
-                  "Ref": "LambdaVersionModifyRespE09BB59B",
-                },
-              },
-              Object {
                 "EventType": "viewer-request",
                 "LambdaFunctionARN": Object {
                   "Ref": "LambdaVersionAntiHotlinkB0E73263",
                 },
               },
+              Object {
+                "EventType": "origin-response",
+                "LambdaFunctionARN": Object {
+                  "Ref": "LambdaVersionSecurityHeaders03A0688D",
+                },
+              },
             ],
-            "TargetOriginId": "demostack2distdistDistOrigin12A667D0B",
+            "TargetOriginId": "demostackdistdistDistOrigin182885C74",
             "ViewerProtocolPolicy": "allow-all",
           },
           "Enabled": true,
@@ -101,7 +101,7 @@ Object {
                 ],
               },
               "DomainName": "aws.amazon.com",
-              "Id": "demostack2distdistDistOrigin12A667D0B",
+              "Id": "demostackdistdistDistOrigin182885C74",
             },
           ],
         },

@@ -8,10 +8,10 @@ export class IntegTesting {
   constructor() {
     const app = new cdk.App();
 
-    const stack = new cdk.Stack(app, 'demo-stack2');
+    const stack = new cdk.Stack(app, 'demo-stack');
 
     // prepare the `modify resonse header` extension
-    const modifyRespHeader = new extensions.ModifyResponseHeader(stack, 'ModifyResp');
+    // const modifyRespHeader = new extensions.ModifyResponseHeader(stack, 'ModifyResp');
 
     // prepare the `anti-hotlinking` extension
     const antiHotlinking = new extensions.AntiHotlinking(stack, 'AntiHotlink', {
@@ -21,13 +21,19 @@ export class IntegTesting {
       ],
     });
 
+    // prepare the security headers extension
+    const securityHeaders = new extensions.SecurtyHeaders(stack, 'SecurityHeaders');
+
     // create the cloudfront distribution with extension(s)
     new Distribution(stack, 'dist', {
       defaultBehavior: {
         origin: new origins.HttpOrigin('aws.amazon.com'),
         edgeLambdas: [
-          modifyRespHeader,
+          // modifyRespHeader,
+          // viewer request
           antiHotlinking,
+          // origin response
+          securityHeaders,
         ],
       },
     });

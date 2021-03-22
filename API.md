@@ -5,8 +5,10 @@
 Name|Description
 ----|-----------
 [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking)|The Anti-Hotlinking extension.
+[Custom](#cdk-cloudfront-plus-custom)|Custom extension sample.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
+[SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
 
 
@@ -23,7 +25,7 @@ Name|Description
 
 Name|Description
 ----|-----------
-[IExtensions](#cdk-cloudfront-plus-iextensions)|*No description*
+[IExtensions](#cdk-cloudfront-plus-iextensions)|The Extension interface.
 
 
 
@@ -55,9 +57,40 @@ new AntiHotlinking(scope: Construct, id: string, props: AntiHotlinkingProps)
 
 Name | Type | Description 
 -----|------|-------------
-**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | <span></span>
-**functionArn** | <code>string</code> | <span></span>
-**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
+
+
+
+## class Custom  <a id="cdk-cloudfront-plus-custom"></a>
+
+Custom extension sample.
+
+__Implements__: [IExtensions](#cdk-cloudfront-plus-iextensions)
+
+### Initializer
+
+
+
+
+```ts
+new Custom(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
 
 
 
@@ -136,9 +169,41 @@ new ModifyResponseHeader(scope: Construct, id: string)
 
 Name | Type | Description 
 -----|------|-------------
-**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | <span></span>
-**functionArn** | <code>string</code> | <span></span>
-**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
+
+
+
+## class SecurtyHeaders  <a id="cdk-cloudfront-plus-securtyheaders"></a>
+
+Security Headers extension.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)
+
+### Initializer
+
+
+
+
+```ts
+new SecurtyHeaders(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
 
 
 
@@ -221,17 +286,18 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
 
-
+The Extension interface.
 
 ### Properties
 
 
 Name | Type | Description 
 -----|------|-------------
-**functionArn** | <code>string</code> | <span></span>
-**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
 
 
 

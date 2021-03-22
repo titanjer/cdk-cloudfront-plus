@@ -1,8 +1,8 @@
+import * as path from 'path';
 import * as cf from '@aws-cdk/aws-cloudfront';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as cdk from '@aws-cdk/core';
 import { ServerlessApp } from './';
-import * as path from 'path';
 
 /**
  * The Extension interface

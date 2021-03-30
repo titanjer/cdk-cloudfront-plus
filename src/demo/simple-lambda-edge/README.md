@@ -6,7 +6,7 @@ yarn watch
 Open a seperate terminal and run:
 
 ```sh
-AWS_REGION=us-east-1 cdk --app lib/demo/simple/index.js diff
+AWS_REGION=us-east-1 cdk --app lib/demo/simple-lambda-edge/index.js diff
 ```
 
 On deploy completed, open the cloudfront URL with

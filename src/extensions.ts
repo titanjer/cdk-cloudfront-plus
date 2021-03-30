@@ -260,13 +260,13 @@ export class DefaultDirIndex extends Custom {
 
 /**
  * Simple content generation
- * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/0ce548216c11fd3aba24efec2264758b4c858531/edge/nodejs/simple-lambda-edge
+ * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/simple-lambda-edge
  */
-export class Simple extends Custom {
+export class SimpleLambdaEdge extends Custom {
   readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
-    const entry = `${EXTENSION_ASSETS_PATH}/simple/index.ts`;
-    const func = new NodejsFunction(scope, 'SimpleFunc', {
+    const entry = `${EXTENSION_ASSETS_PATH}/simple-lambda-edge/index.ts`;
+    const func = new NodejsFunction(scope, 'SimpleLambdaEdgeFunc', {
       entry,
       // L@E does not support NODE14 so use NODE12 instead.
       runtime: lambda.Runtime.NODEJS_12_X,
@@ -274,8 +274,8 @@ export class Simple extends Custom {
     super(scope, id, {
       func,
       eventType: cf.LambdaEdgeEventType.VIEWER_REQUEST,
-      solutionId: 'SO8134',
-      templateDescription: 'Cloudfront extension with AWS CDK - Default Directory Index for Amazon S3 Origin.',
+      solutionId: '',
+      templateDescription: 'Cloudfront extension with AWS CDK - Simple Lambda Edge.',
     });
     this.lambdaFunction = this.functionVersion;
   }

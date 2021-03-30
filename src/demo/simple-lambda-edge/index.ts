@@ -7,7 +7,7 @@ const app = new cdk.App();
 const stack = new cdk.Stack(app, 'simple-demo');
 
 // create the cloudfront distribution with extension(s)
-const simple = new extensions.Simple(stack, 'Simple');
+const simple = new extensions.SimpleLambdaEdge(stack, 'SimpleLambdaEdge');
 
 // create the cloudfront distribution with extension(s)
 const dist = new cf.Distribution(stack, 'dist', {

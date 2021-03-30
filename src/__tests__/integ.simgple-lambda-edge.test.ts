@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { SynthUtils } from '@aws-cdk/assert';
 import '@aws-cdk/assert/jest';
 import * as cf from '@aws-cdk/aws-cloudfront';

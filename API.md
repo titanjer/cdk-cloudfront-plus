@@ -8,10 +8,10 @@ Name|Description
 [Custom](#cdk-cloudfront-plus-custom)|Custom extension sample.
 [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
-[EchoEvent](#cdk-cloudfront-plus-echoevent)|echo event - a testing extenson simply echo the request event object.
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
+[Simple](#cdk-cloudfront-plus-simple)|Simple content generation.
 
 
 **Structs**
@@ -189,36 +189,6 @@ Name | Type | Description
 
 
 
-## class EchoEvent  <a id="cdk-cloudfront-plus-echoevent"></a>
-
-echo event - a testing extenson simply echo the request event object.
-
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
-__Extends__: [Custom](#cdk-cloudfront-plus-custom)
-
-### Initializer
-
-
-
-
-```ts
-new EchoEvent(scope: Construct, id: string)
-```
-
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
-* **id** (<code>string</code>)  *No description*
-
-
-
-### Properties
-
-
-Name | Type | Description 
------|------|-------------
-**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
-
-
-
 ## class ModifyResponseHeader  <a id="cdk-cloudfront-plus-modifyresponseheader"></a>
 
 The modify response header extension.
@@ -317,6 +287,36 @@ Name | Type | Description
 
 
 
+## class Simple  <a id="cdk-cloudfront-plus-simple"></a>
+
+Simple content generation.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [Custom](#cdk-cloudfront-plus-custom)
+
+### Initializer
+
+
+
+
+```ts
+new Simple(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
+
+
+
 ## struct AntiHotlinkingProps  <a id="cdk-cloudfront-plus-antihotlinkingprops"></a>
 
 
@@ -382,7 +382,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [EchoEvent](#cdk-cloudfront-plus-echoevent), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [Simple](#cdk-cloudfront-plus-simple)
 
 The Extension interface.
 

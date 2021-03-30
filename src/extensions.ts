@@ -259,13 +259,14 @@ export class DefaultDirIndex extends Custom {
 };
 
 /**
- * echo event - a testing extenson simply echo the request event object
+ * Simple content generation
+ * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/0ce548216c11fd3aba24efec2264758b4c858531/edge/nodejs/simple-lambda-edge
  */
-export class EchoEvent extends Custom {
+export class Simple extends Custom {
   readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
-    const entry = `${EXTENSION_ASSETS_PATH}/echo-event/index.ts`;
-    const func = new NodejsFunction(scope, 'EchoEventFunc', {
+    const entry = `${EXTENSION_ASSETS_PATH}/simple/index.ts`;
+    const func = new NodejsFunction(scope, 'SimpleFunc', {
       entry,
       // L@E does not support NODE14 so use NODE12 instead.
       runtime: lambda.Runtime.NODEJS_12_X,

@@ -4,16 +4,16 @@ import * as cdk from '@aws-cdk/core';
 import * as extensions from '../../extensions';
 
 const app = new cdk.App();
-const stack = new cdk.Stack(app, 'echo-event-demo5');
+const stack = new cdk.Stack(app, 'simple-demo');
 
 // create the cloudfront distribution with extension(s)
-const echoEvent = new extensions.EchoEvent(stack, 'EchoEvent');
+const simple = new extensions.Simple(stack, 'Simple');
 
 // create the cloudfront distribution with extension(s)
 const dist = new cf.Distribution(stack, 'dist', {
   defaultBehavior: {
     origin: new origins.HttpOrigin('aws.amazon.com'),
-    edgeLambdas: [echoEvent],
+    edgeLambdas: [simple],
   },
 });
 

@@ -11,7 +11,7 @@ Name|Description
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
-[Simple](#cdk-cloudfront-plus-simple)|Simple content generation.
+[SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)|Simple content generation.
 
 
 **Structs**
@@ -287,7 +287,7 @@ Name | Type | Description
 
 
 
-## class Simple  <a id="cdk-cloudfront-plus-simple"></a>
+## class SimpleLambdaEdge  <a id="cdk-cloudfront-plus-simplelambdaedge"></a>
 
 Simple content generation.
 
@@ -300,7 +300,7 @@ __Extends__: [Custom](#cdk-cloudfront-plus-custom)
 
 
 ```ts
-new Simple(scope: Construct, id: string)
+new SimpleLambdaEdge(scope: Construct, id: string)
 ```
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
@@ -382,7 +382,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [Simple](#cdk-cloudfront-plus-simple)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)
 
 The Extension interface.
 

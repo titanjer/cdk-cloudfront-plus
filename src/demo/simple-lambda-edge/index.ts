@@ -4,7 +4,7 @@ import * as cdk from '@aws-cdk/core';
 import * as extensions from '../../extensions';
 
 const app = new cdk.App();
-const stack = new cdk.Stack(app, 'simple-demo');
+const stack = new cdk.Stack(app, 'simple-lambda-edge');
 
 // create the cloudfront distribution with extension(s)
 const simple = new extensions.SimpleLambdaEdge(stack, 'SimpleLambdaEdge');

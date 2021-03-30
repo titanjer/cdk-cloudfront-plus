@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as cf from '@aws-cdk/aws-cloudfront';
 import * as lambda from '@aws-cdk/aws-lambda';
+import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import * as cdk from '@aws-cdk/core';
 import { ServerlessApp } from './';
 
@@ -205,7 +206,7 @@ export class Custom extends cdk.NestedStack implements IExtensions {
       timeout: props?.timeout ?? cdk.Duration.seconds(5),
     });
     this.functionArn = func.functionArn;
-    this.functionVersion = new lambda.Version(this, `FuncVer${id}`, { lambda: func });
+    this.functionVersion = func.currentVersion;
     this.eventType = props?.eventType ?? cf.LambdaEdgeEventType.ORIGIN_RESPONSE;
     this._addDescription();
     this._outputSolutionId();
@@ -236,7 +237,6 @@ function bumpFunctionVersion(scope: cdk.Construct, id: string, functionArn: stri
   });
 }
 
-
 /**
  * Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins
  *
@@ -245,11 +245,34 @@ function bumpFunctionVersion(scope: cdk.Construct, id: string, functionArn: stri
 export class DefaultDirIndex extends Custom {
   readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
+
     super(scope, id, {
       runtime: lambda.Runtime.NODEJS_12_X,
       handler: 'index.handler',
       code: lambda.AssetCode.fromAsset(`${EXTENSION_ASSETS_PATH}/cf-default-dir-index`),
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
+      solutionId: 'SO8134',
+      templateDescription: 'Cloudfront extension with AWS CDK - Default Directory Index for Amazon S3 Origin.',
+    });
+    this.lambdaFunction = this.functionVersion;
+  }
+};
+
+/**
+ * echo event - a testing extenson simply echo the request event object
+ */
+export class EchoEvent extends Custom {
+  readonly lambdaFunction: lambda.Version;
+  constructor(scope: cdk.Construct, id: string) {
+    const entry = `${EXTENSION_ASSETS_PATH}/echo-event/index.ts`;
+    const func = new NodejsFunction(scope, 'EchoEventFunc', {
+      entry,
+      // L@E does not support NODE14 so use NODE12 instead.
+      runtime: lambda.Runtime.NODEJS_12_X,
+    });
+    super(scope, id, {
+      func,
+      eventType: cf.LambdaEdgeEventType.VIEWER_REQUEST,
       solutionId: 'SO8134',
       templateDescription: 'Cloudfront extension with AWS CDK - Default Directory Index for Amazon S3 Origin.',
     });

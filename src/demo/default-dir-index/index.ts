@@ -1,19 +1,19 @@
+import * as fs from 'fs';
 import * as path from 'path';
 import * as cf from '@aws-cdk/aws-cloudfront';
 import * as s3 from '@aws-cdk/aws-s3';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import * as cdk from '@aws-cdk/core';
 import * as extensions from '../../extensions';
-import * as fs from 'fs';
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, 'default-dir-index-demo');
 
 // create the cloudfront distribution with extension(s)
-const rewriteUriDemo = new extensions.DefaultDirIndex(stack, 'DefaultDirIndexDemo');
+const defaultDirIndex = new extensions.DefaultDirIndex(stack, 'DefaultDirIndexDemo');
 
 // create Demo S3 Bucket.
-const bucket = new s3.Bucket(rewriteUriDemo, 'demoBucket', {
+const bucket = new s3.Bucket(defaultDirIndex, 'demoBucket', {
   autoDeleteObjects: true,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
   websiteIndexDocument: 'index.html',
@@ -27,20 +27,19 @@ fs.mkdirSync(path.join(__dirname, 'a/b/c'), {
 });
 fs.writeFileSync(path.join(__dirname, 'a/b/c/index.html'), '<h1>Hello CDK!</h1>');
 // Put demo Object to Bucket.
-new BucketDeployment(rewriteUriDemo, 'Deployment', {
+new BucketDeployment(defaultDirIndex, 'Deployment', {
   sources: [Source.asset(path.join(__dirname, './'))],
   destinationBucket: bucket,
   retainOnDelete: false,
 });
 
 // CloudFront OriginAccessIdentity for Bucket
-const originAccessIdentity = new cf.OriginAccessIdentity(rewriteUriDemo, 'OriginAccessIdentity', {
+const originAccessIdentity = new cf.OriginAccessIdentity(defaultDirIndex, 'OriginAccessIdentity', {
   comment: `CloudFront OriginAccessIdentity for ${bucket.bucketName}`,
 });
 
 // CloudfrontWebDistribution
 const cloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'CloudFrontWebDistribution', {
-  enableIpV6: false,
   originConfigs: [
     {
       s3OriginSource: {
@@ -49,7 +48,7 @@ const cloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'Cloud
       },
       behaviors: [{
         isDefaultBehavior: true,
-        lambdaFunctionAssociations: [rewriteUriDemo],
+        lambdaFunctionAssociations: [defaultDirIndex],
       }],
     },
   ],

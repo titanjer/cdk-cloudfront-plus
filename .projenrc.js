@@ -47,6 +47,12 @@ const project = new AwsCdkConstructLibrary({
   testdir: 'src/__tests__',
 });
 
+project.addFields({
+  resolutions: {
+    netmask: '2.0.1',
+  },
+});
+
 const automation = new Automation(project, {
   automationToken: AUTOMATION_TOKEN,
 });

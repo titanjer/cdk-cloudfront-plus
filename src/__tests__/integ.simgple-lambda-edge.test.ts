@@ -37,7 +37,7 @@ test('minimal usage', () => {
           {
             EventType: 'viewer-request',
             LambdaFunctionARN: {
-              Ref: 'SimpleLambdaEdgeFuncCurrentVersionC9DD846A68e77f21cb1477592d4d9684d6b07efd',
+              Ref: 'SimpleLambdaEdgeFuncCurrentVersionC9DD846A3a2ed6f14fe43d702350aa0ccb398f83',
             },
           },
         ],

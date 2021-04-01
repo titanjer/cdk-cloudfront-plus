@@ -22,9 +22,9 @@ test('minimal usage', () => {
 
   const policy = new cf.OriginRequestPolicy(stack, 'OrigReqPolicy', {
     headerBehavior: cf.OriginRequestHeaderBehavior.allowList(
-      'cloudfront-viewer-country'
+      'cloudfront-viewer-country',
     ),
-  })
+  });
 
   // create the cloudfront distribution with extension(s)
   const dist = new cf.Distribution(stack, 'dist', {
@@ -55,7 +55,7 @@ test('minimal usage', () => {
             },
           },
         ],
-        ViewerProtocolPolicy: 'allow-all'
+        ViewerProtocolPolicy: 'allow-all',
       },
     },
   });

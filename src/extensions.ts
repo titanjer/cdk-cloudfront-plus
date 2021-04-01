@@ -266,7 +266,7 @@ export interface SelectOriginByViwerCountryProps {
    * The pre-defined country code table.
    * Exampe: { 'US': 'amazon.com' }
    */
-  readonly countryTable: { [code: string]: string }
+  readonly countryTable: { [code: string]: string };
 }
 
 /**
@@ -281,8 +281,8 @@ export class SelectOriginByViwerCountry extends Custom {
       bundling: {
         define: {
           'process.env.COUNTRY_CODE_TABLE': jsonStringifiedBundlingDefinition(props.countryTable),
-       }
-      }
+        },
+      },
     });
     super(scope, id, {
       func,
@@ -317,5 +317,5 @@ export class SimpleLambdaEdge extends Custom {
 function jsonStringifiedBundlingDefinition(value: any): string {
   return JSON.stringify(value)
     .replace(/"/g, '\\"')
-    .replace(/,/g, '\\,')
+    .replace(/,/g, '\\,');
 }

@@ -41,7 +41,7 @@ test('minimal usage', () => {
             },
           },
         ],
-        ViewerProtocolPolicy: 'allow-all'
+        ViewerProtocolPolicy: 'allow-all',
       },
     },
   });

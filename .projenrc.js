@@ -59,15 +59,10 @@ const mergifyRules = [
         strict: 'smart',
         strict_method: 'merge',
       },
-      conditions: [
-        '#approved-reviews-by>=1',
-        'status-success=build',
-        '-title~=(WIP|wip)',
-        '-label~=(blocked|do-not-merge)',
-      ],
+      delete_head_branch: {},
     },
     conditions: [
-      '"#approved-reviews-by>=1"',
+      '#approved-reviews-by>=1',
       'status-success=build',
       '-title~=(WIP|wip)',
       '-label~=(blocked|do-not-merge)',

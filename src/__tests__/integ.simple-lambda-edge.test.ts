@@ -37,11 +37,11 @@ test('minimal usage', () => {
           {
             EventType: 'viewer-request',
             LambdaFunctionARN: {
-              Ref: 'SimpleLambdaEdgeFuncCurrentVersionC9DD846A3a2ed6f14fe43d702350aa0ccb398f83',
+              Ref: 'SimpleLambdaEdgeFuncCurrentVersionC9DD846A1cfb90e3686bafc953ec65944f2ca7b8',
             },
           },
         ],
-        ViewerProtocolPolicy: 'allow-all',
+        ViewerProtocolPolicy: 'allow-all'
       },
     },
   });

@@ -45,21 +45,19 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-s3-deployment',
   ],
-  testdir: 'src/__tests__', 
+  testdir: 'src/__tests__',
   mergify: false,
 });
 
 const mergifyRules = [
-    {
-      name: 'Automatic merge on approval and successful build',
-      actions: {
-        merge: {
-          method: 'squash',
-          commit_message: 'title+body',
-          strict: 'smart',
-          strict_method: 'merge',
-        },
-        delete_head_branch: {}
+  {
+    name: 'Automatic merge on approval and successful build',
+    actions: {
+      merge: {
+        method: 'squash',
+        commit_message: 'title+body',
+        strict: 'smart',
+        strict_method: 'merge',
       },
       conditions: [
         '#approved-reviews-by>=1',
@@ -68,24 +66,31 @@ const mergifyRules = [
         '-label~=(blocked|do-not-merge)',
       ],
     },
-    {
-      name: 'Automatic merge PRs with auto-merge label upon successful build',
-      actions: {
-        merge: {
-          method: 'squash',
-          commit_message: 'title+body',
-          strict: 'smart',
-          strict_method: 'merge',
-        },
-        delete_head_branch: {}
+    conditions: [
+      '"#approved-reviews-by>=1"',
+      'status-success=build',
+      '-title~=(WIP|wip)',
+      '-label~=(blocked|do-not-merge)',
+    ],
+  },
+  {
+    name: 'Automatic merge PRs with auto-merge label upon successful build',
+    actions: {
+      merge: {
+        method: 'squash',
+        commit_message: 'title+body',
+        strict: 'smart',
+        strict_method: 'merge',
       },
-      conditions: [
-        'label=auto-merge',
-        'status-success=build',
-        '-title~=(WIP|wip)',
-        '-label~=(blocked|do-not-merge)',
-      ],
-    }
+      delete_head_branch: {},
+    },
+    conditions: [
+      'label=auto-merge',
+      'status-success=build',
+      '-title~=(WIP|wip)',
+      '-label~=(blocked|do-not-merge)',
+    ],
+  },
 ];
 
 new Mergify(project.github, {

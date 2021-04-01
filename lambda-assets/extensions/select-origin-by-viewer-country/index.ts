@@ -1,11 +1,6 @@
 export async function handler(event: any) {
   const request = event.Records[0].cf.request;
-  console.log(request)
-  console.log('Event: %j', event)
-  console.log('CountryCodeTable: %j', process.env.COUNTRY_CODE_TABLE)
-  console.log('CountryCodeTable Type: %s', typeof(process.env.COUNTRY_CODE_TABLE))
   const countryCodeTable = process.env.COUNTRY_CODE_TABLE
-
   let newDomainName: string;
   let viewerCountry: string;
 

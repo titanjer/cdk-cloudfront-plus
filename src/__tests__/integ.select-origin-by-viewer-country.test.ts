@@ -51,7 +51,7 @@ test('minimal usage', () => {
           {
             EventType: 'origin-request',
             LambdaFunctionARN: {
-              Ref: 'SelectOriginViewerCountryFuncCurrentVersion32A1D59Bfe3ee639eeb49e2cb1229a16fee32e6f',
+              Ref: 'SelectOriginViewerCountryFuncCurrentVersion32A1D59B0e2ad5c9ee3b77e9947b080cb3c186c1',
             },
           },
         ],

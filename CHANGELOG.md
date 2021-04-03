@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.26](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.25...v0.1.26) (2021-04-03)
+
+
+### Features
+
+* **extension:** redirect by geolocation  ([#50](https://github.com/pahudnet/cdk-cloudfront-plus/issues/50)) ([012f591](https://github.com/pahudnet/cdk-cloudfront-plus/commit/012f59110be8f450e4b432f607cf49580b8e79f5)), closes [#11](https://github.com/pahudnet/cdk-cloudfront-plus/issues/11)
+
 ### [0.1.25](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.24...v0.1.25) (2021-04-03)
 
 ### [0.1.24](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.23...v0.1.24) (2021-04-03)

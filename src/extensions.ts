@@ -313,6 +313,38 @@ export class SelectOriginByViwerCountry extends Custom {
   }
 };
 
+export interface RedirectByGeolocationProps {
+  /**
+   * The pre-defined country code table.
+   * Exampe: { 'US': 'amazon.com' }
+   */
+  readonly countryTable: { [code: string]: string };
+}
+
+/**
+ * Forward request to the nearest PoP as per geolocation.
+ */
+export class RedirectByGeolocation extends Custom {
+  constructor(scope: cdk.Construct, id: string, props: RedirectByGeolocationProps) {
+    const func = new NodejsFunction(scope, 'RedirectByGeolocationFunc', {
+      entry: `${EXTENSION_ASSETS_PATH}/cf-redirect-by-geolocation/index.ts`,
+      // L@E does not support NODE14 so use NODE12 instead.
+      runtime: lambda.Runtime.NODEJS_12_X,
+      bundling: {
+        define: {
+          'process.env.COUNTRY_CODE_TABLE': jsonStringifiedBundlingDefinition(props.countryTable),
+        },
+      },
+    });
+    super(scope, id, {
+      func: func,
+      eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
+      solutionId: 'SO8134',
+      templateDescription: 'Cloudfront extension with AWS CDK - Redirect by Geolocation',
+    });
+  }
+}
+
 /**
  * Simple content generation
  * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/simple-lambda-edge
@@ -332,7 +364,6 @@ export class SimpleLambdaEdge extends Custom {
     });
   }
 };
-
 
 function jsonStringifiedBundlingDefinition(value: any): string {
   return JSON.stringify(value)

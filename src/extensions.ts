@@ -281,7 +281,7 @@ export class RedirectCustomErrorPage extends Custom {
   }
 };
 
-export interface SelectOriginByViwerCountryProps {
+export interface AccessOriginByGeolocationProps {
   /**
    * The pre-defined country code table.
    * Exampe: { 'US': 'amazon.com' }
@@ -290,12 +290,12 @@ export interface SelectOriginByViwerCountryProps {
 }
 
 /**
- * selective origin by viewer counry
+ * (SO8118)Access Origin by Geolocation
  */
-export class SelectOriginByViwerCountry extends Custom {
-  constructor(scope: cdk.Construct, id: string, props: SelectOriginByViwerCountryProps) {
-    const func = new NodejsFunction(scope, 'SelectOriginViewerCountryFunc', {
-      entry: `${EXTENSION_ASSETS_PATH}/select-origin-by-viewer-country/index.ts`,
+export class AccessOriginByGeolocation extends Custom {
+  constructor(scope: cdk.Construct, id: string, props: AccessOriginByGeolocationProps) {
+    const func = new NodejsFunction(scope, 'AccessOriginByGeolocationFunc', {
+      entry: `${EXTENSION_ASSETS_PATH}/access-origin-by-geolocation/index.ts`,
       // L@E does not support NODE14 so use NODE12 instead.
       runtime: lambda.Runtime.NODEJS_12_X,
       bundling: {
@@ -307,8 +307,8 @@ export class SelectOriginByViwerCountry extends Custom {
     super(scope, id, {
       func,
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
-      solutionId: '',
-      templateDescription: 'Cloudfront extension with AWS CDK - Selective Origin by Viewer Country',
+      solutionId: 'S08118',
+      templateDescription: 'Cloudfront extension with AWS CDK - Access Origin by Geolocation',
     });
   }
 };
@@ -337,9 +337,9 @@ export class RedirectByGeolocation extends Custom {
       },
     });
     super(scope, id, {
-      func: func,
+      func,
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
-      solutionId: 'SO8134',
+      solutionId: 'SO8135',
       templateDescription: 'Cloudfront extension with AWS CDK - Redirect by Geolocation',
     });
   }

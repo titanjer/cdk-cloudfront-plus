@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as cf from '@aws-cdk/aws-cloudfront';
+import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import * as cdk from '@aws-cdk/core';
@@ -26,6 +27,10 @@ export interface IExtensions {
    * The Lambda edge event type for this extension
    */
   readonly eventType: cf.LambdaEdgeEventType;
+  /**
+   * Allows a Lambda function to have read access to the body content.
+   */
+  readonly includeBody?: boolean;
 };
 
 /**
@@ -216,6 +221,15 @@ export interface CustomProps {
   */
   readonly eventType?: cf.LambdaEdgeEventType;
   /**
+   * Allows a Lambda function to have read access to the body content.
+   * Only valid for "request" event types (ORIGIN_REQUEST or VIEWER_REQUEST).
+   *
+   * @stability stable
+   *
+   * @default false
+   */
+  readonly includeBody?: boolean;
+  /**
    * The solution identifier
    *
    * @default - no identifier
@@ -235,6 +249,7 @@ export class Custom extends cdk.NestedStack implements IExtensions {
   readonly functionArn: string;
   readonly functionVersion: lambda.Version;
   readonly eventType: cf.LambdaEdgeEventType;
+  readonly includeBody?: boolean;
   readonly props: CustomProps;
   constructor(scope: cdk.Construct, id: string, props: CustomProps) {
     super(scope, id, props);
@@ -250,6 +265,7 @@ export class Custom extends cdk.NestedStack implements IExtensions {
     this.functionArn = func.functionArn;
     this.functionVersion = func.currentVersion;
     this.eventType = props?.eventType ?? cf.LambdaEdgeEventType.ORIGIN_RESPONSE;
+    this.includeBody = props?.includeBody ?? false;
     this._addDescription();
     this._outputSolutionId();
   }
@@ -413,6 +429,7 @@ function jsonStringifiedBundlingDefinition(value: any): string {
     .replace(/,/g, '\\,');
 }
 
+
 export interface OAuth2AuthorizationCodeGrantProps {
   readonly clientId: string;
   readonly clientSecret: string;
@@ -458,3 +475,43 @@ export class OAuth2AuthorizationCodeGrant extends Custom {
     this.lambdaFunction = this.functionVersion;
   }
 };
+
+
+export interface GlobalDataIngestionProps {
+  /**
+   * Kinesis Firehose DeliveryStreamName
+   */
+  readonly firehoseStreamName: string;
+};
+
+/**
+ * Ingest data to Kinesis Firehose by nearest cloudfront edge
+ * @see https://aws.amazon.com/blogs/networking-and-content-delivery/global-data-ingestion-with-amazon-cloudfront-and-lambdaedge/
+ */
+export class GlobalDataIngestion extends Custom {
+  readonly lambdaFunction: lambda.Version;
+
+  constructor(scope: cdk.Construct, id: string, props: GlobalDataIngestionProps) {
+    const func = new NodejsFunction(scope, 'GlobalDataIngestionFunc', {
+      entry: `${EXTENSION_ASSETS_PATH}/cf-global-data-ingestion/index.ts`,
+      // L@E does not support NODE14 so use NODE12 instead.
+      runtime: lambda.Runtime.NODEJS_12_X,
+      bundling: {
+        define: {
+          'process.env.DELIVERY_STREAM_NAME': jsonStringifiedBundlingDefinition(props.firehoseStreamName),
+        },
+      },
+    });
+    func.role?.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonKinesisFirehoseFullAccess'));
+
+    super(scope, id, {
+      func,
+      eventType: cf.LambdaEdgeEventType.VIEWER_REQUEST,
+      includeBody: true,
+      solutionId: 'SO8133',
+      templateDescription: 'Cloudfront extension with AWS CDK - Global Data Ingestion',
+    });
+
+    this.lambdaFunction = this.functionVersion;
+  }
+}

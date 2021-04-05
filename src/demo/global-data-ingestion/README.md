@@ -14,12 +14,22 @@ $ AWS_REGION=us-east-1 cdk --app lib/demo/global-data-ingestion/index.js diff
 $ AWS_REGION=us-east-1 cdk --app lib/demo/global-data-ingestion/index.js deploy
 ```
 
-On deploy completed, open the cloudfront URL with
+On deploy completed, run the demo.sh
 
 ```sh
-$ curl d21oww9vlwyre5.cloudfront.net --request POST --data "GG-1"
-$ curl d21oww9vlwyre5.cloudfront.net --request POST --data "GG-2"
-$ curl d21oww9vlwyre5.cloudfront.net --request POST --data "GG-3"
-$ curl d21oww9vlwyre5.cloudfront.net --request POST --data "GG-4"
-$ curl d21oww9vlwyre5.cloudfront.net --request POST --data "GG-5"
+$ sh demo.sh
+URL: https://d21o0123456789.cloudfront.net/
+
+Ingest 'This is data 0' to cloudfront
+Ingest 'This is data 1' to cloudfront
+Ingest 'This is data 2' to cloudfront
+Ingest 'This is data 3' to cloudfront
+Ingest 'This is data 4' to cloudfront
+Ingest 'This is data 5' to cloudfront
+Ingest 'This is data 6' to cloudfront
+Ingest 'This is data 7' to cloudfront
+Ingest 'This is data 8' to cloudfront
+Ingest 'This is data 9' to cloudfront
+
+Please open S3 bucket 'global-data-ingestion' to see the results
 ```

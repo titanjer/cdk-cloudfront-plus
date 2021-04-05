@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.34](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.33...v0.1.34) (2021-04-05)
+
+
+### Features
+
+* **ext): OAuth2 Authentication (Authorization Code Grant:** init ([#59](https://github.com/pahudnet/cdk-cloudfront-plus/issues/59)) ([6d5e440](https://github.com/pahudnet/cdk-cloudfront-plus/commit/6d5e44042dc864a138e943224db9e40c1fee7c19)), closes [#17](https://github.com/pahudnet/cdk-cloudfront-plus/issues/17)
+
 ### [0.1.33](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.32...v0.1.33) (2021-04-05)
 
 ### [0.1.32](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.31...v0.1.32) (2021-04-05)

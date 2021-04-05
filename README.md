@@ -59,5 +59,4 @@ new Distribution(stack, 'dist', {
 | [Custom Error Page](https://github.com/pahud/cdk-cloudfront-plus/pull/46)|  Header Rewrite   | SO8136 | cf-custom-error-page  | Completed | @BabooPan |
 | [Anti Hotlinking](https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/anti-hotlinking) |  Security   | SO8126 | cf-anti-hotlinking     | Completed | @pahud |
 | [Add Security Headers](https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/add-security-headers) |  Security   | SO8102 | cf-add-security-headers     | Completed | @pahud |
-
 | [Failover to alternative origin](https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/multiple-origin-IP-retry) |  Origin Selection   | SO8120 | cf-multiple-origin-ip-retry    | Completed | @guan840912 |

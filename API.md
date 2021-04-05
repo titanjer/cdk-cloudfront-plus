@@ -7,11 +7,11 @@ Name|Description
 [AccessOriginByGeolocation](#cdk-cloudfront-plus-accessoriginbygeolocation)|(SO8118)Access Origin by Geolocation.
 [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking)|The Anti-Hotlinking extension.
 [Custom](#cdk-cloudfront-plus-custom)|Custom extension sample.
+[CustomErrorPage](#cdk-cloudfront-plus-customerrorpage)|Display customized error pages, or mask 4XX error pages, based on where the error originated.
 [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
 [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation)|Forward request to the nearest PoP as per geolocation.
-[RedirectCustomErrorPage](#cdk-cloudfront-plus-redirectcustomerrorpage)|Display customized error pages, or mask 4XX error pages, based on where the error originated.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
 [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)|Simple content generation.
@@ -134,6 +134,38 @@ Name | Type | Description
 **functionArn** | <code>string</code> | Lambda function ARN for this extension.
 **functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
 **props** | <code>[CustomProps](#cdk-cloudfront-plus-customprops)</code> | <span></span>
+
+
+
+## class CustomErrorPage  <a id="cdk-cloudfront-plus-customerrorpage"></a>
+
+Display customized error pages, or mask 4XX error pages, based on where the error originated.
+
+use case - see https://aws.amazon.com/blogs/networking-and-content-delivery/customize-403-error-pages-from-amazon-cloudfront-origin-with-lambdaedge/
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [Custom](#cdk-cloudfront-plus-custom)
+
+### Initializer
+
+
+
+
+```ts
+new CustomErrorPage(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
 
 
 
@@ -271,38 +303,6 @@ new RedirectByGeolocation(scope: Construct, id: string, props: RedirectByGeoloca
 * **props** (<code>[RedirectByGeolocationProps](#cdk-cloudfront-plus-redirectbygeolocationprops)</code>)  *No description*
   * **countryTable** (<code>Map<string, string></code>)  The pre-defined country code table. 
 
-
-
-
-## class RedirectCustomErrorPage  <a id="cdk-cloudfront-plus-redirectcustomerrorpage"></a>
-
-Display customized error pages, or mask 4XX error pages, based on where the error originated.
-
-use case - see https://aws.amazon.com/blogs/networking-and-content-delivery/customize-403-error-pages-from-amazon-cloudfront-origin-with-lambdaedge/
-
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
-__Extends__: [Custom](#cdk-cloudfront-plus-custom)
-
-### Initializer
-
-
-
-
-```ts
-new RedirectCustomErrorPage(scope: Construct, id: string)
-```
-
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
-* **id** (<code>string</code>)  *No description*
-
-
-
-### Properties
-
-
-Name | Type | Description 
------|------|-------------
-**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
 
 
 
@@ -472,7 +472,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AccessOriginByGeolocation](#cdk-cloudfront-plus-accessoriginbygeolocation), [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation), [RedirectCustomErrorPage](#cdk-cloudfront-plus-redirectcustomerrorpage), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)
+__Implemented by__: [AccessOriginByGeolocation](#cdk-cloudfront-plus-accessoriginbygeolocation), [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [CustomErrorPage](#cdk-cloudfront-plus-customerrorpage), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)
 
 The Extension interface.
 

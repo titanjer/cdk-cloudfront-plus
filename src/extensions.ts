@@ -265,17 +265,17 @@ export class DefaultDirIndex extends Custom {
  *
  *  use case - see https://aws.amazon.com/blogs/networking-and-content-delivery/customize-403-error-pages-from-amazon-cloudfront-origin-with-lambdaedge/
  */
-export class RedirectCustomErrorPage extends Custom {
+export class CustomErrorPage extends Custom {
   readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
 
     super(scope, id, {
       runtime: lambda.Runtime.PYTHON_3_7,
       handler: 'index.handler',
-      code: lambda.AssetCode.fromAsset(`${EXTENSION_ASSETS_PATH}/redirect-custom-error-page`),
+      code: lambda.AssetCode.fromAsset(`${EXTENSION_ASSETS_PATH}/cf-custom-error-page`),
       eventType: cf.LambdaEdgeEventType.ORIGIN_RESPONSE,
-      solutionId: '',
-      templateDescription: 'Cloudfront extension with AWS CDK - Display customized error pages, or mask 4XX error pages, based on where the error originated.',
+      solutionId: 'SO8136',
+      templateDescription: 'Cloudfront extension with AWS CDK - Custom Error Page',
     });
     this.lambdaFunction = this.functionVersion;
   }
@@ -295,7 +295,7 @@ export interface AccessOriginByGeolocationProps {
 export class AccessOriginByGeolocation extends Custom {
   constructor(scope: cdk.Construct, id: string, props: AccessOriginByGeolocationProps) {
     const func = new NodejsFunction(scope, 'AccessOriginByGeolocationFunc', {
-      entry: `${EXTENSION_ASSETS_PATH}/access-origin-by-geolocation/index.ts`,
+      entry: `${EXTENSION_ASSETS_PATH}/cf-access-origin-by-geolocation/index.ts`,
       // L@E does not support NODE14 so use NODE12 instead.
       runtime: lambda.Runtime.NODEJS_12_X,
       bundling: {

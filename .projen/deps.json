@@ -104,6 +104,10 @@
       "type": "build"
     },
     {
+      "name": "dotenv",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-cdk/aws-cloudfront-origins",
       "version": "^1.73.0",
       "type": "peer"
@@ -124,11 +128,13 @@
       "type": "peer"
     },
     {
-      "name": "@aws-cdk/aws-s3",
+      "name": "@aws-cdk/aws-s3-deployment",
+      "version": "^1.73.0",
       "type": "peer"
     },
     {
-      "name": "@aws-cdk/aws-s3-deployment",
+      "name": "@aws-cdk/aws-s3",
+      "version": "^1.73.0",
       "type": "peer"
     },
     {
@@ -163,6 +169,16 @@
     },
     {
       "name": "@aws-cdk/aws-lambda",
+      "version": "^1.73.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-s3-deployment",
+      "version": "^1.73.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-s3",
       "version": "^1.73.0",
       "type": "runtime"
     },

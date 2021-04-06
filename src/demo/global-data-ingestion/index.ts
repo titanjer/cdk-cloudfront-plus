@@ -67,7 +67,7 @@ new cdk.CfnOutput(stack, 'distributionDomainName', {
   value: dist.distributionDomainName,
 });
 new cdk.CfnOutput(stack, 'firehoseStreamName', {
-  value: firehoseStream.deliveryStreamName ?? 'gg',
+  value: firehoseStream.deliveryStreamName!,
 });
 new cdk.CfnOutput(stack, 'firehoseDataBucket', {
   value: firehoseDataBucket.bucketName,

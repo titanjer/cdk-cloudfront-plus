@@ -613,7 +613,7 @@ Name | Type | Description
 **eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
 **functionArn** | <code>string</code> | Lambda function ARN for this extension.
 **functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
-**includeBody**? | <code>boolean</code> | Allows a Lambda function to have read access to the body content.<br/>__*Optional*__
+**includeBody**? | <code>boolean</code> | Allows a Lambda function to have read access to the body content.<br/>__*Default*__: false
 
 
 

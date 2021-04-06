@@ -50,8 +50,6 @@ test('minimal usage', () => {
     firehoseStreamName: firehoseStream.deliveryStreamName ?? 'gg',
   });
 
-  // const func = lambda.Function.fromFunctionArn(stack, 'LambdaEdgeFunction', ext.functionArn);
-  // func.role?.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonKinesisFirehoseFullAccess'));
 
   const dist = new cf.Distribution(stack, 'dist', {
     defaultBehavior: {

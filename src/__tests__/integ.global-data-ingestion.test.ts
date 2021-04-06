@@ -47,7 +47,7 @@ test('minimal usage', () => {
    * Cloudfront and Lambda@Edge
    */
   const ext = new extensions.GlobalDataIngestion(stack, 'GlobalDataIngestion', {
-    firehoseStreamName: firehoseStream.deliveryStreamName ?? 'gg',
+    firehoseStreamName: firehoseStream.deliveryStreamName!
   });
 
 

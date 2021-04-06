@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.5...v0.2.6) (2021-04-06)
+
+
+### Bug Fixes
+
+* **SO8133:** fix global-data-ingestion demo code ([#67](https://github.com/pahudnet/cdk-cloudfront-plus/issues/67)) ([025a3d0](https://github.com/pahudnet/cdk-cloudfront-plus/commit/025a3d0b0aea723587a9eb0dba88db0ec491b1b4))
+
 ### [0.2.5](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.4...v0.2.5) (2021-04-06)
 
 

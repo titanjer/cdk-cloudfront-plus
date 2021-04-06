@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.35...v0.2.1) (2021-04-06)
+
 ## [0.2.0](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.35...v0.2.0) (2021-04-05)
 
 ### [0.1.35](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.34...v0.1.35) (2021-04-05)

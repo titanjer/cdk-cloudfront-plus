@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.2...v0.2.3) (2021-04-06)
+
+
+### Features
+
+* **SO8112:** normalize-query-string ([#64](https://github.com/pahudnet/cdk-cloudfront-plus/issues/64)) ([92c3d90](https://github.com/pahudnet/cdk-cloudfront-plus/commit/92c3d907e72bb30ea5f81a724723e99a6c012e3e))
+
 ### [0.2.2](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.1...v0.2.2) (2021-04-06)
 
 ### [0.2.1](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.35...v0.2.1) (2021-04-06)

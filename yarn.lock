@@ -192,13 +192,21 @@
     "@aws-cdk/core" "1.96.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-iam@1.96.0":
+"@aws-cdk/aws-iam@1.96.0", "@aws-cdk/aws-iam@^1.73.0":
   version "1.96.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.96.0.tgz#6c179296e4d9d16ac596fadab6410ddc03ca4d34"
   integrity sha512-ikpmhDFgmhZmvU89aVon0BVtJS85ez/VqlE9Xvo3UBEKjoCt5ptvIX9tqbqlBp3FwKWvOEXVgKE81kn5OWvDWg==
   dependencies:
     "@aws-cdk/core" "1.96.0"
     "@aws-cdk/region-info" "1.96.0"
+    constructs "^3.3.69"
+
+"@aws-cdk/aws-kinesisfirehose@^1.73.0":
+  version "1.96.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose/-/aws-kinesisfirehose-1.96.0.tgz#4d337960926598a05124445397186df97faaf4ac"
+  integrity sha512-GsLWeZ8Tb0Ig7ZAoFe91dYt54sYC24kFOT6wJMXkNOlK3uCZR5LVEAv9PbmJq4ts01MNqz6eoIFRGnz60ptcmw==
+  dependencies:
+    "@aws-cdk/core" "1.96.0"
     constructs "^3.3.69"
 
 "@aws-cdk/aws-kms@1.96.0":

@@ -29,6 +29,8 @@ export interface IExtensions {
   readonly eventType: cf.LambdaEdgeEventType;
   /**
    * Allows a Lambda function to have read access to the body content.
+   * 
+   * @default false
    */
   readonly includeBody?: boolean;
 };
